@@ -1,0 +1,22 @@
+<div id="signup-form" class="messages-container" ng-if='!$root.isLoggedIn'>
+    <h2 class="clr">Sign up</h2>
+    <div>
+        <form ng-submit='signup.signupSubmit()' novalidate>
+            <p ng-if="signup.error.length > 0" class="alert alert-danger">{{signup.error}}</p>
+            <div class="form-group">
+                <label for="username">User name</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="User name" ng-model="signup.username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="signup.password">
+            </div>
+            <div class="form-group">
+                <label for="rpassword">Repeat password</label>
+                <input type="password" class="form-control" id="rpassword" name="rpassword" placeholder="Password" ng-model="signup.rpassword">
+            </div>
+            <input type="submit" class="btn btn-success" value="Sign up">
+            <a class="btn btn-primary pull-right" href="/login">Log in</a>
+        </form>
+    </div>
+</div>

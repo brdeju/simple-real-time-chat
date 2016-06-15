@@ -9,6 +9,20 @@ module.exports = function() {
     return function(socket) {
         var username, room = 'general', msgNum = 10, daysAgo = 7;
 
+        socket.on('relead', function (data) {
+            ChatModel.save({
+                content: data.message,
+                username: username,
+                room: data.room
+            }).then((res) => {
+                socket.broadcast.to(room).emit('send_message', {
+                    username: username,
+                    createdAt: res.createdAt,
+                    content: data.message
+                });
+            });
+        });
+
         socket.on('send_message', function (data) {
             ChatModel.save({
                 content: data.message,

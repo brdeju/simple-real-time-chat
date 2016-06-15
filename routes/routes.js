@@ -1,4 +1,5 @@
 const UserModel = require('../models/UserModel');
+const RoomModel = require('../models/RoomModel');
 
 
 
@@ -50,7 +51,43 @@ exports.login = function(req, res){
             return res.json({ status: 1, msg: req.session.uid, user: user});
         });
     });
+};
 
+exports.signup = function(req, res){
+    UserModel.isUserExist(req.body.username).then( (isExists) => {
+        if(isExists) {
+            return res.json({status: -1, msg: 'exists'});
+        }
+
+        UserModel.save({
+            name: req.body.username,
+            password: req.body.password,
+            avatar: req.body.avatar,
+            room: 'general',
+            role: 2
+        }).then( (user) => {
+            if (!user) {
+                return res.json({status: -1, msg: 'error'});
+            }
+
+            return res.json({ status: 1, username: user.name});
+        });
+    });
+
+};
+
+exports.createRoom = function(req, res){
+    RoomModel.save({
+        name: req.body.name,
+        private: false,
+        allowedUsers: []
+    }).then( (room) => {
+        if (!room) {
+            return res.json({status: -1, msg: 'exists'});
+        }
+
+        return res.json({ status: 1, name: room.name});
+    });
 };
 
 exports.partials = function (req, res) {

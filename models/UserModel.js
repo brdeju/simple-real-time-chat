@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    name: String,
-    password: String,
-    isActive: Boolean,
-    avatar: String,
-    role: Number,
+    name: { type : String , unique : true, required : true, dropDups: true },
+    password: { type : String , required : true },
+    isActive: Boolean, // if user is logged in
+    avatar: String, // this is not used
+    role: Number, // this is not used
     room: String
 }, { timestamps: true });
 
@@ -76,7 +76,8 @@ function save(user) {
         name: user.name,
         password: user.password,
         isActive: false,
-        avatar: '',
+        avatar: user.avatar || '',
+        role: user.role || 2,
         room: user.room
     });
 

@@ -59,3 +59,10 @@
     color: rgba(0,0,0,0.6);
     font-size: 12px;
 }
+#login-form,
+#signup-form {
+    width: 460px;
+    margin: 60px auto;
+    padding: 20px;
+    border: 1px solid rgba(0,0,0,0.2);
+}

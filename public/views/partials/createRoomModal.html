@@ -1,0 +1,22 @@
+
+<div class="modal-header">
+    <h3 class="modal-title">I'm a modal!</h3>
+</div>
+<div class="modal-body">
+    <form>
+        <p ng-if="room.error.length > 0" class="alert alert-danger">{{room.error}}</p>
+        <div class="form-group">
+            <label for="room-name">Room name</label>
+            <input id="room-name" type="text" class="form-control" ng-model="room.roomName" placeholder="Room name">
+        </div>
+        <!--In the future-->
+        <!--<div class="form-group">-->
+            <!--<label for="room-is-private">Private</label>-->
+            <!--<input id="room-is-private" type="text" class="form-control" ng-model="room.roomName" placeholder="Room name">-->
+        <!--</div>-->
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="room.create()">Create</button>
+    <button class="btn btn-warning" type="button" ng-click="room.cancel()">Cancel</button>
+</div>

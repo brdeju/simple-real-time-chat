@@ -1,7 +1,8 @@
-<div class="messages-container" ng-if='!$root.isLoggedIn'>
+<div id="login-form" class="messages-container" ng-if='!$root.isLoggedIn'>
     <h2 class="clr">Log in</h2>
     <div>
         <form ng-submit='login.loginSubmit()' novalidate>
+            <p ng-if="login.error.length > 0" class="alert alert-danger">{{login.error}}</p>
             <div class="form-group">
                 <label for="username">User name</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="User name" ng-model="login.login">
@@ -11,6 +12,7 @@
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="login.password">
             </div>
             <input type="submit" class="btn btn-success" value="Log in">
+            <a class="btn btn-primary pull-right" href="/signup">Sign up</a>
         </form>
     </div>
 </div>

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const roomSchema = new mongoose.Schema({
-    name: String,
+    name: { type : String , unique : true, required : true, dropDups: true },
     private: Boolean,
     allowedUsers: Array
 }, { timestamps: true });

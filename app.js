@@ -1,12 +1,3 @@
-
-// TODO: refactoring !!!
-
-// TODO: creating new rooms (private or public)
-// TODO: clicking on user name create new private chat room with just two users !
-// TODO: user profile
-// TODO: user avatar
-// TODO: emoticons :D
-
 /** Module dependencies. */
 const dotenv = require('dotenv');
 const path = require('path');
@@ -18,7 +9,7 @@ const errorHandler = require('errorhandler');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const routes = require('./routes/routes.js');
-var favicon = require('serve-favicon');
+const favicon = require('serve-favicon');
 
 /** Load environment variables from .env file, where API keys and passwords are configured. */
 dotenv.load({ path: '.env' });
@@ -60,6 +51,7 @@ app.use(session({
 app.use(favicon(__dirname + '/favicon.png'));
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 app.use('/bower_components',  express.static(path.join(__dirname, '/bower_components'), { maxAge: 31557600000 }));
+app.use('/node_modules',  express.static(path.join(__dirname, '/node_modules'), { maxAge: 31557600000 }));
 
 /** Errors handlers */
 if ('development' == app.get('env')) {
@@ -73,6 +65,8 @@ if ('production' == app.get('env')) {
 app.get('/', routes.index);
 app.post('/login', routes.login);
 app.post('/logout', routes.logout);
+app.post('/register', routes.signup);
+app.post('/create-room', routes.createRoom);
 app.get('/partials/:name', routes.partials);
 app.get('*', routes.index);
 

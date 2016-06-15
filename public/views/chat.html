@@ -4,7 +4,12 @@
     <div id="room-button-wrapper" class="pull-right">
         <div class="rooms-box">
             <div class="btn-group" uib-dropdown>
-                <button id="room-button" class="btn btn-default" type="button">{{chat.selectedRoom | uppercase}}</button>
+                <button id="create-room-button" class="btn btn-info" type="button" ng-click="chat.createRoom()">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+                <button id="room-button" class="btn btn-default" type="button">
+                    {{chat.selectedRoom | uppercase}}
+                </button>
                 <button class="btn btn-default" type="button" uib-dropdown-toggle>
                     <span class="caret"></span>
                     <span class="sr-only">Change room</span>
@@ -17,6 +22,7 @@
             </div>
         </div>
     </div>
+    <!--<ng-include src="'views/partials/createRoomModal.html'"></ng-include>-->
     <hr class="clr"/>
     <div id="chat-box" class="row">
         <div class="col-xs-2">

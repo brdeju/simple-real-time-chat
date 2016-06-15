@@ -29,17 +29,26 @@ function config($routeProvider, $locationProvider) {
         .when('/', {
             templateUrl: 'views/chat.html',
             controller: 'ChatCtrl',
-            controllerAs: 'chat'
+            controllerAs: 'chat',
+            access: 2
         })
         .when('/login', {
             templateUrl: 'views/login.html',
             controller: 'LoginCtrl',
-            controllerAs: 'login'
+            controllerAs: 'login',
+            access: 1
+        })
+        .when('/signup', {
+            templateUrl: 'views/signup.html',
+            controller: 'SignupCtrl',
+            controllerAs: 'signup',
+            access: 1
         })
         .when('/logout', {
             templateUrl: 'views/logout.html',
             controller: 'LogoutCtrl',
-            controllerAs: 'logout'
+            controllerAs: 'logout',
+            access: 2
         })
         .otherwise({
             redirectTo: '/'
@@ -90,7 +99,7 @@ function run($rootScope, $location, $cookies, socket, chat) {
     });
 
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
-        if(!$rootScope.isLoggedIn || !$rootScope.username) {
+        if((!$rootScope.isLoggedIn || !$rootScope.username) && next.access >= 2) {
             return $location.path('/login');
         } else if($rootScope.isLoggedIn && next.$$route.originalPath == '/login') {
             return $location.path('/');
