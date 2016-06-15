@@ -8,7 +8,7 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "postinstall": "npm run bower",
+    "postinstall": "bower install --no-interactive --allow-root",
     "mongo": "mongod --dbpath C:\\Dane\\Nauka\\nodejs\\simpleRTC\\db",
     "start": "node app.js"
   },

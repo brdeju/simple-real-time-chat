@@ -134,13 +134,13 @@ module.exports = function() {
             });
         });
 
-        socket.on('disconnect', function () {
-            if(!username) {
+        socket.on('disconnect', function (data, fn) {
+            if(!data.username) {
                 return ;
             }
-            UserModel.update(username, {isActive: false});
+            UserModel.update(data.username, {isActive: false});
             socket.broadcast.to(room).emit('user_left', {
-                username: username,
+                username: data.username,
                 createdAt: new Date()
             });
         });

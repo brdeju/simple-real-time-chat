@@ -181,7 +181,7 @@ function LogoutCtrl($rootScope, $location, $http, $cookies, socket) {
         data: {}
     }).then(function(data) {
         if(data.data.status === 1) {
-
+            var username = $rootScope.username;
             $rootScope.isLoggedIn = false;
             $rootScope.user = null;
             $rootScope.username = '';
@@ -192,7 +192,7 @@ function LogoutCtrl($rootScope, $location, $http, $cookies, socket) {
             $location.path('/login');
 
             socket.emit('disconnect', {
-                username: $rootScope.username
+                username: username
             });
         }
     }, function(error) {
