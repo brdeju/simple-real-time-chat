@@ -1,0 +1,29 @@
+doctype html
+html(ng-app="simpleRTC")
+    head
+        meta(charset='utf8')
+        base(href='/')
+        title Simple Real Time Chat with AngularJS, Bootstrap, NodeJS, Express, Socket.io & MongoDB
+
+        link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.css')
+        link(rel='stylesheet', href='/bower_components/angular-bootstrap/ui-bootstrap-csp.css')
+        link(rel='stylesheet', href='/css/app.css')
+
+        script(src='/socket.io/socket.io.js')
+        script(src='/bower_components/jquery/dist/jquery.min.js')
+        script(src='/bower_components/angular/angular.min.js')
+        script(src='/bower_components/angular-route/angular-route.min.js')
+        script(src='/bower_components/angular-animate/angular-animate.min.js')
+        script(src='/bower_components/angular-cookies/angular-cookies.min.js')
+        script(src='/bower_components/angular-touch/angular-touch.min.js')
+        script(src='/bower_components/angular-scroll-glue/src/scrollglue.js')
+        script(src='/bower_components/angular-bootstrap/ui-bootstrap.min.js')
+        script(src='/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js')
+        script(src='/bower_components/angular-socket-io/socket.min.js')
+        script(src='js/app.js')
+        script(src='js/services.js')
+        script(src='js/controllers.js')
+        script(src='js/filters.js')
+        script(src='js/directives.js')
+
+    body.container(ng-view='')

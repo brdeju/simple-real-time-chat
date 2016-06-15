@@ -1,0 +1,16 @@
+<div class="messages-container" ng-if='!$root.isLoggedIn'>
+    <h2 class="clr">Log in</h2>
+    <div>
+        <form ng-submit='login.loginSubmit()' novalidate>
+            <div class="form-group">
+                <label for="username">User name</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="User name" ng-model="login.login">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="login.password">
+            </div>
+            <input type="submit" class="btn btn-success" value="Log in">
+        </form>
+    </div>
+</div>

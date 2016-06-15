@@ -1,0 +1,61 @@
+/* app css stylesheet */
+
+.overflowable {
+    height: 240px;
+    overflow-y: auto;
+    border: 1px solid rgba(0,0,0,0.2);
+    padding: 8px;
+}
+.overflowable p {
+    padding-bottom: 4px;
+    margin: 8px 0 0;
+}
+.overflowable p:first-of-type {
+    margin-top: 0;
+}
+.overflowable p:last-of-type {
+    border-bottom: none;
+}
+.overflowable p.alert {
+    margin: 5px;
+    padding: 8px;
+}
+
+.col {
+    float: left;
+    width: 350px;
+}
+
+.clr {
+    clear: both;
+}
+.underscored {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+#logout-btn {
+    margin-top: 14px;
+    margin-bottom: 10px;
+    margin-left: 36px;
+}
+#username-header {
+}
+#room-button {
+    width: 160px;
+    font-size: 16px;
+    line-height: 19px;
+}
+#room-button-wrapper {
+    margin-top: 14px;
+    margin-bottom: 10px;
+}
+#chat-box {
+    margin-bottom: 20px;
+}
+.msg-author {
+
+}
+.msg-createdAt {
+    color: rgba(0,0,0,0.6);
+    font-size: 12px;
+}

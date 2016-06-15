@@ -1,0 +1,54 @@
+<div class="messages-container" ng-if='$root.isLoggedIn'>
+    <h2 id="username-header" class="pull-left">You are logged in as {{$root.username}}</h2>
+    <a id="logout-btn" class="btn btn-default pull-right" href="/logout">Logout</a>
+    <div id="room-button-wrapper" class="pull-right">
+        <div class="rooms-box">
+            <div class="btn-group" uib-dropdown>
+                <button id="room-button" class="btn btn-default" type="button">{{chat.selectedRoom | uppercase}}</button>
+                <button class="btn btn-default" type="button" uib-dropdown-toggle>
+                    <span class="caret"></span>
+                    <span class="sr-only">Change room</span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="room-button">
+                    <li role="menuitem" ng-repeat="room in chat.rooms track by $index" ng-click="chat.changeRoom(room)">
+                        <a href>{{room.name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr class="clr"/>
+    <div id="chat-box" class="row">
+        <div class="col-xs-2">
+            <h3>Users</h3>
+            <div class="overflowable">
+                <p class="underscored" ng-repeat="user in chat.users track by $index">{{user.name}}</p>
+            </div>
+        </div>
+        <div class="col-xs-10">
+            <h3>Messages</h3>
+            <div scroll-glue class="overflowable">
+                <p class="underscored" ng-repeat="msg in chat.messages track by $index" ng-class="{'alert alert-warning': msg.username == 'chatroom'}">
+                    <span class="msg-author">{{msg.username}}</span>
+                    <span class="msg-createdAt"> ({{msg.createdAt | date:'EEE, d MMM, H:mm:ss'}})</span>: <br/>
+                    <span class="msg-content">{{msg.content}}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="clr">
+        <form class="form-inline" ng-submit="chat.sendMessage()">
+            <div class="form-group pull-right">
+                <label for="new-message-content">Message:</label>
+                <div class="input-group ">
+                    <input class="form-control" id="new-message-content" size="60" ng-model="chat.message">
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" type="submit" ng-disabled="!chat.message">
+                            Send <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
